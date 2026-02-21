@@ -4,7 +4,7 @@ const CONFIG = {
         name:   'TX24',
         handle: 'Marche, Italy',
         avatar: 'avatar.png',
-        bio:    'Italian developer, lyrics syncer & gamer. I build Python tools for controller emulation and websites for lyric splitting. I play R6 Siege too.',
+        bio:    'Chinese developer, lyrics syncer & gamer living in Italy. I build Python tools for controller emulation and websites for lyric splitting. I play R6 Siege too.',
         tags:   ['Python', 'TypeScript', 'Gamer', 'Lyrics', 'R6 Siege'],
     },
 
