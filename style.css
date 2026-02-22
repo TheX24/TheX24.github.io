@@ -461,3 +461,20 @@ h1 {
     gap: 0.6rem;
     flex-wrap: wrap;
 }
+
+.site-footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.25);
+    padding: 1rem 0 0.5rem;
+    letter-spacing: 0.05em;
+}
+
+.site-footer a {
+    color: rgba(255, 255, 255, 0.25);
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: rgba(255, 255, 255, 0.6);
+}

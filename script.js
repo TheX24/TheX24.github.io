@@ -2,9 +2,9 @@
 const CONFIG = {
     me: {
         name:   'TX24',
-        handle: 'Marche, Italy',
+        handle: 'he/him • aka TheX24, TheX246408, TX246408, Escaltins',
         avatar: 'avatar.png',
-        bio:    'Italian developer, lyrics syncer & gamer. I build Python tools for controller emulation and websites for lyric splitting. I play R6 Siege too.',
+        bio:    'Chinese developer, lyrics syncer & gamer living in Italy. I build Python tools for controller emulation and websites for lyric splitting. I play R6 Siege too.',
         tags:   ['Python', 'TypeScript', 'Gamer', 'Lyrics', 'R6 Siege'],
     },
 
@@ -24,7 +24,7 @@ const CONFIG = {
 
     timezone: {
         zone:  'Europe/Rome',
-        label: 'CET/GMT+1/UTC+1 — Italy',
+        label: 'CET/GMT+1/UTC+1 • Marche, Italy',
     },
 
     birthday: { month: 10, day: 11 }, // October 11
@@ -238,6 +238,7 @@ document.getElementById('app').innerHTML = [
     renderLanguages(),
     renderProjects(),
     renderGames(),
+    `<footer class="site-footer">Contact me at <a href="mailto:contact@tx24.is-a.dev">contact@tx24.is-a.dev</a></footer>`
 ].join('');
 
 //  DOT GRID BACKGROUND
@@ -257,18 +258,25 @@ function resize() {
         for (let c = 0; c < cols; c++)
             dots.push({ x: c * SPACING, y: r * SPACING });
 }
+
 window.addEventListener('resize', resize);
 window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+window.addEventListener('touchstart', e => {
+    mouse.x = e.touches[0].clientX;
+    mouse.y = e.touches[0].clientY;
+}, { passive: true });
 window.addEventListener('touchmove', e => {
-    const t = e.touches[0];
-    mouse.x = t.clientX;
-    mouse.y = t.clientY;
+    mouse.x = e.touches[0].clientX;
+    mouse.y = e.touches[0].clientY;
 }, { passive: true });
-window.addEventListener('touchend', () => {
-    mouse.x = -9999;
-    mouse.y = -9999;
-}, { passive: true });
-resize();
+
+function resetMouse() {
+    setTimeout(() => { mouse.x = -9999; mouse.y = -9999; }, 80);
+}
+window.addEventListener('touchend',    resetMouse, { passive: true });
+window.addEventListener('touchcancel', resetMouse, { passive: true });
+
+resize(); // ← this was missing
 
 (function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -309,16 +317,38 @@ document.querySelectorAll('.tilt-wrap').forEach(wrap => {
     wrap.addEventListener('mouseenter', () => {
         card.style.transition = 'transform 0.1s ease-out, border-color 0.3s, background 0.3s, box-shadow 0.3s';
     });
-    wrap.addEventListener('mousemove', e => applyTilt(e.clientX, e.clientY));
+    wrap.addEventListener('mousemove',  e => applyTilt(e.clientX, e.clientY));
     wrap.addEventListener('mouseleave', resetTilt);
 
     // Touch
-    wrap.addEventListener('touchstart', () => {
-        card.style.transition = 'transform 0.1s ease-out, border-color 0.3s, background 0.3s, box-shadow 0.3s';
+    wrap.addEventListener('touchstart', e => {
+    card.style.transition = 'transform 0.1s ease-out, border-color 0.3s, background 0.3s, box-shadow 0.3s';
+    applyTilt(e.touches[0].clientX, e.touches[0].clientY);
     }, { passive: true });
     wrap.addEventListener('touchmove', e => {
-        const t = e.touches[0];
-        applyTilt(t.clientX, t.clientY);
+        applyTilt(e.touches[0].clientX, e.touches[0].clientY);
     }, { passive: true });
-    wrap.addEventListener('touchend', resetTilt, { passive: true });
+
+    // Reset on both the element AND window to catch all cases   
+    wrap.addEventListener('touchend', e => {
+    // Use changedTouches since touches[0] is gone on touchend
+    if (e.changedTouches[0]) {
+        applyTilt(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+    }
+    // Force reflow so the tilt is painted before reset
+    card.getBoundingClientRect();
+    setTimeout(resetTilt, 80);
+    }, { passive: true });
+
+    wrap.addEventListener('touchcancel', resetTilt, { passive: true });
 });
+
+// Global fallback — resets ALL cards if touch ends anywhere
+window.addEventListener('touchend', () => {
+    document.querySelectorAll('.tilt-wrap').forEach(wrap => {
+        const card = wrap.querySelector('.card, .socials-card');
+        if (!card) return;
+        card.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1), border-color 0.3s, background 0.3s, box-shadow 0.3s';
+        card.style.transform  = 'rotateY(0deg) rotateX(0deg)';
+    });
+}, { passive: true });
