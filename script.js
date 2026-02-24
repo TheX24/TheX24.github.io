@@ -57,7 +57,7 @@ const CONFIG = {
     projects: [
         {
             icon:  'fas fa-gamepad',
-            name:  'DD2RL Emulator',
+            name:  'DD2RL',
             desc:  'Use your DrunkDeer G75 magnetic keyboard as a virtual Xbox 360 controller.',
             url:   'https://github.com/TheX24/DD2RL',
         },
@@ -67,6 +67,12 @@ const CONFIG = {
             desc:  'A powerful web application for formatting and preprocessing song lyrics with real-time conversion.',
             url:   'https://github.com/TheX24/Lyrprep',
             site:  'https://lyrprep.spicylyrics.org',
+        },
+        {
+            icon:  'fas fa-gun',
+            name:  '6Recoil',
+            desc:  'Recoil control tool for Siege — dual weapon support, CapsLock toggle, chat detection, and anti-detection variance. Built with Python & tkinter.',
+            url:   'https://github.com/TheX24/6Recoil',
         },
     ],
 };
