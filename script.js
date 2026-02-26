@@ -244,7 +244,7 @@ document.getElementById('app').innerHTML = [
     renderLanguages(),
     renderProjects(),
     renderGames(),
-    `<footer class="site-footer">Contact me at <a href="mailto:contact@tx24.is-a.dev">contact@tx24.is-a.dev</a></footer>`
+    `<footer class="site-footer">Contact me at <a href="mailto:tx24@tx24.is-a.dev">tx24@tx24.is-a.dev</a></footer>`
 ].join('');
 
 //  DOT GRID BACKGROUND
