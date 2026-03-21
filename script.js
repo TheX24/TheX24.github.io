@@ -235,7 +235,9 @@ function renderProjects() {
                 ${site ? `<a href="${site}" target="_blank"><i class="fas fa-globe"></i> Website</a>` : ''}
             </div>
         </div>`).join('');
-    return wrapCard('card', 'projects', `<div class="projects-grid">${cards}</div>`);
+    const count = CONFIG.projects.length;
+    const layout = (count === 4) ? 'grid-4' : 'grid-3';
+    return wrapCard('card', 'projects', `<div class="projects-grid" data-layout="${layout}">${cards}</div>`);
 }
 function renderRow(...renderers) {
     const inner = renderers.map(r => `<div class="row-item">${r()}</div>`).join('');

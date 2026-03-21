@@ -139,6 +139,14 @@ h1 {
     gap: 1rem;
 }
 
+.projects-grid[data-layout="grid-4"] {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.projects-grid[data-layout="grid-3"] {
+    grid-template-columns: repeat(3, 1fr);
+}
+
 .proj-card {
     background: rgba(255,255,255,0.04);
     border: 1px solid var(--border);
@@ -245,7 +253,7 @@ h1 {
 @media (max-width: 500px) {
     .me-top { flex-direction: column; text-align: center; }
     .tags { justify-content: center; }
-    .projects-grid { grid-auto-rows: auto; }
+    .projects-grid { grid-template-columns: 1fr !important; grid-auto-rows: auto; }
 }
 
 .tag:hover {
