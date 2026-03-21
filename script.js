@@ -74,6 +74,12 @@ const CONFIG = {
             desc:  'Recoil control tool for Siege — dual weapon support, CapsLock toggle, chat detection, and anti-detection variance. Built with Python & tkinter.',
             url:   'https://github.com/TheX24/6Recoil',
         },
+        {
+            icon:  'fas fa-music',
+            name:  'Spicy Player',
+            desc:  'Offline Android music player featuring a port of the Spicy Lyrics rendering engine.',
+            url:   'https://github.com/TheX24/Spicy-Player',
+        },
     ],
 };
 
