@@ -4,16 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TX24</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@13/font/simple-icons.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://cdn.steamstatic.com">
-    <link rel="dns-prefetch" href="https://cdn.steamstatic.com">
+    
+    <!-- Styles -->
+  <script type="module" crossorigin src="/assets/main-BkzFkCow.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-D72A4twm.css">
 </head>
 <body>
+    <!-- Background Canvas -->
     <canvas id="bg"></canvas>
-    <main id="app"></main>
-    <script src="background.js"></script>
-    <script src="script.js"></script>
+
+    <!-- App Container -->
+    <div id="app">
+        <!-- Sidebar will be injected here -->
+        <aside id="sidebar"></aside>
+
+        <!-- Vertical Divider -->
+        <div class="divider"></div>
+
+        <!-- Main content area -->
+        <main id="content">
+            <!-- Router views will be injected here -->
+        </main>
+
+        <!-- Floating Navbar -->
+        <nav id="navbar"></nav>
+    </div>
+
+    <!-- Scripts -->
 </body>
 </html>
